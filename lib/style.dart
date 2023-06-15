@@ -4,7 +4,7 @@ class AppColors {
   static LinearGradient backgorund1 = const LinearGradient(
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
-    colors: [Color(0xff3A3A3A), Color(0xff3A3A3A)],
+    colors: [Color(0xff3A3A3A), Color.fromARGB(255, 77, 76, 76)],
   );
 
   static LinearGradient head = const LinearGradient(

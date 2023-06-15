@@ -9,9 +9,9 @@ import 'package:get/get_core/src/get_main.dart';
 readFile() async {
   var result = await FilePicker.platform.pickFiles(allowMultiple: false);
   if (result == null) return;
-
   File filePath = File(result.files.first.path!);
-  return filePath.readAsBytesSync();
+  return filePath;
+  //  return filePath.readAsBytesSync();
 }
 
 readFileAsStirng() async {

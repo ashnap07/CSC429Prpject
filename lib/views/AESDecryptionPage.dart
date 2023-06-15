@@ -191,16 +191,14 @@ class AESDecryptionPage extends StatelessWidget {
                   );
                   return;
                 }
-                var before = DateTime.now();
                 Uint8List ciphertext = MyAES.decrypt(
                   key: _controller.key!,
                   iv: _controller.iv!,
                   cipherText: _controller.file1!,
                 );
-                var dif = DateTime.now().difference(before);
-                print("======== $dif ========");
+
                 writeFile(
-                  name: "plaintext.txt",
+                  name: _controller.path.replaceAll(".enc", ""),
                   str: ciphertext,
                 );
               },

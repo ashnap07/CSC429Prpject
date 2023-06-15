@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'dart:typed_data';
+import 'package:path/path.dart' as p;
 
 import 'package:cryptography_system/cryptoAlgorithms/AES.dart';
 import 'package:cryptography_system/ForFile.dart';
@@ -16,6 +17,7 @@ class AESPageController extends GetxController {
   String? ivString;
   Uint8List? file1;
   String file1StatusTitle = "Upload a file";
+  String path = "";
   resetFiles() {
     file1 = null;
     file1StatusTitle = "Upload a file";
@@ -45,7 +47,10 @@ class AESPageController extends GetxController {
   }
 
   readFile1() async {
-    file1 = await readFile();
+    var file = await readFile();
+    if (file == null) return;
+    path = p.basename(file.toString()).replaceAll("'", "");
+    file1 = file.readAsBytesSync();
     if (file1 == null) return;
     file1StatusTitle = "Upload another file";
     update();

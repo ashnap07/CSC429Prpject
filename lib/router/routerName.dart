@@ -58,7 +58,6 @@ List<GetPage> routerApp = [
 ];
 
 class Routes {
-  static String splachScreen = "/splachScreen";
   static String homepage = "/homepage";
   static String RSAPage = "/RSAPage";
   static String RSAEncryptionPage = "/RSAEncryptionPage";

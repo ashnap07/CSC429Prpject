@@ -190,16 +190,16 @@ class AESEncryptionPage extends StatelessWidget {
                 );
                 return;
               }
-              var before = DateTime.now();
+              //var before = DateTime.now();
               var ciphertext = MyAES.encrypt(
                 key: _controller.key!,
                 iv: _controller.iv!,
                 plainText: _controller.file1!,
               );
-              var dif = DateTime.now().difference(before);
-              print("======== $dif ========");
+              //var dif = DateTime.now().difference(before);
+              //print("======== $dif ========");
               writeFile(
-                name: "ciphertext.enc",
+                name: "${_controller.path}.enc",
                 str: ciphertext.bytes,
               );
             },

@@ -171,12 +171,12 @@ class RSASigningPage extends StatelessWidget {
                   );
                   return;
                 }
-                Uint8List signed = await MyRSA.sign(
+                Uint8List signed = await RSALib.sign(
                     plaintext: _controller.file1!,
                     privateKey: _controller.privateKey!);
 
                 writeFile(
-                  name: "signed.enc",
+                  name: "${_controller.path}.enc",
                   str: signed,
                 );
               },

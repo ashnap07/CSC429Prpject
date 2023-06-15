@@ -11,7 +11,6 @@ readFile() async {
   if (result == null) return;
   File filePath = File(result.files.first.path!);
   return filePath;
-  //  return filePath.readAsBytesSync();
 }
 
 readFileAsStirng() async {

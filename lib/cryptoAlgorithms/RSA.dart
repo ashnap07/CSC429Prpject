@@ -1,8 +1,8 @@
 import 'dart:typed_data';
 import 'package:fast_rsa/fast_rsa.dart';
 
-class MyRSA {
-  MyRSA();
+class RSALib {
+  RSALib();
 
   static Future<KeyPair> generateKey({
     required int numberOfBits,

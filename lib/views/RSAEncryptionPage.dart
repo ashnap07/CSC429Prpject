@@ -170,14 +170,12 @@ class RSAEncryptionPage extends StatelessWidget {
                   );
                   return;
                 }
-                var before = DateTime.now();
-                Uint8List ciphertext = await MyRSA.encrypt(
+                Uint8List ciphertext = await RSALib.encrypt(
                     plaintext: _controller.file1!,
                     publicKey: _controller.publicKey!);
-                var dif = DateTime.now().difference(before);
-                print("======== $dif ========");
+
                 writeFile(
-                  name: "ciphertext.enc",
+                  name: "${_controller.path}.enc",
                   str: ciphertext,
                 );
               },

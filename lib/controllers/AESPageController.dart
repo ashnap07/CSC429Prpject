@@ -19,6 +19,7 @@ class AESPageController extends GetxController {
   String file1StatusTitle = "Upload a file";
   String path = "";
   resetFiles() {
+    path = "";
     file1 = null;
     file1StatusTitle = "Upload a file";
     update();
@@ -26,9 +27,9 @@ class AESPageController extends GetxController {
 
   generateKey() {
     keyString = getRandomString(32);
-    key = MyAES.generateKey(keyString: keyString!);
+    key = AESLib.generateKey(keyString: keyString!);
     ivString = getRandomString(16);
-    iv = MyAES.generateIV(ivString: ivString!);
+    iv = AESLib.generateIV(ivString: ivString!);
     storage.write("AESkeyString", keyString);
     storage.write("AESivString", ivString);
     update();
@@ -36,13 +37,13 @@ class AESPageController extends GetxController {
 
   readKey(String str) {
     keyString = str;
-    key = MyAES.generateKey(keyString: keyString!);
+    key = AESLib.generateKey(keyString: keyString!);
     update();
   }
 
   readIv(String str) {
     ivString = str;
-    iv = MyAES.generateIV(ivString: ivString!);
+    iv = AESLib.generateIV(ivString: ivString!);
     update();
   }
 
@@ -64,13 +65,13 @@ class AESPageController extends GetxController {
       generateKey();
       return;
     }
-    key = MyAES.generateKey(keyString: keyString!);
+    key = AESLib.generateKey(keyString: keyString!);
 
     ivString = storage.read("AESivString");
     if (ivString == null) {
       generateKey();
     }
-    iv = MyAES.generateIV(ivString: ivString!);
+    iv = AESLib.generateIV(ivString: ivString!);
   }
 }
 

@@ -185,7 +185,7 @@ class RSAVerifyingPage extends StatelessWidget {
                   return;
                 }
 
-                var result = await MyRSA.verify(
+                var result = await RSALib.verify(
                     signature: _controller.file1!,
                     plaintext: _controller.file2!,
                     publicKey: _controller.publicKey!);

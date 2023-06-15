@@ -171,16 +171,12 @@ class RSADecryptionPage extends StatelessWidget {
                   );
                   return;
                 }
-                var before = DateTime.now();
-                Uint8List plaintext = await MyRSA.decrypt(
+                Uint8List plaintext = await RSALib.decrypt(
                   ciphertext: _controller.file1!,
                   privateKey: _controller.privateKey!,
                 );
-
-                var dif = DateTime.now().difference(before);
-                print("======== $dif ========");
                 writeFile(
-                  name: "plaintext",
+                  name: _controller.path.replaceAll(".enc", ""),
                   str: plaintext,
                 );
               },

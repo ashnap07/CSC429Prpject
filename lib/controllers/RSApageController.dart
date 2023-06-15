@@ -5,6 +5,7 @@ import 'package:cryptography_system/ForFile.dart';
 import 'package:fast_rsa/fast_rsa.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:path/path.dart' as p;
 
 final storage = GetStorage();
 
@@ -16,17 +17,19 @@ class RSApageController extends GetxController {
 
   String file1StatusTitle = "Upload a file";
   String file2StatusTitle = "Upload a file";
+  String path = "";
 
   resetFiles() {
     file1 = null;
     file2 = null;
+    path = "";
     file1StatusTitle = "Upload a file";
     file2StatusTitle = "Upload a file";
     update();
   }
 
   generateKey() async {
-    KeyPair keyPair = await MyRSA.generateKey(numberOfBits: 1024);
+    KeyPair keyPair = await RSALib.generateKey(numberOfBits: 1024);
     publicKey = keyPair.publicKey;
     privateKey = keyPair.privateKey;
     storage.write("publicKey", publicKey);
@@ -49,14 +52,20 @@ class RSApageController extends GetxController {
   }
 
   readFile1() async {
-    file1 = await readFile();
+    var file = await readFile();
+    if (file == null) return;
+    path = p.basename(file.toString()).replaceAll("'", "");
+    file1 = file.readAsBytesSync();
     if (file1 == null) return;
     file1StatusTitle = "Upload another file";
     update();
   }
 
   readFile2() async {
-    file2 = await readFile();
+    var file = await readFile();
+    if (file == null) return;
+    path = p.basename(file.toString()).replaceAll("'", "");
+    file2 = file.readAsBytesSync();
     if (file2 == null) return;
     file2StatusTitle = "Upload another file";
     update();

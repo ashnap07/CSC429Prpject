@@ -191,7 +191,7 @@ class AESDecryptionPage extends StatelessWidget {
                   );
                   return;
                 }
-                Uint8List ciphertext = MyAES.decrypt(
+                Uint8List ciphertext = AESLib.decrypt(
                   key: _controller.key!,
                   iv: _controller.iv!,
                   cipherText: _controller.file1!,

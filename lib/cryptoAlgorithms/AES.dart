@@ -1,7 +1,7 @@
 import 'dart:typed_data';
 import 'package:encrypt/encrypt.dart';
 
-// We using  https://pub.dev/packages/encrypt
+
 class AESLib {
   static Key generateKey({required String keyString}) {
     return Key.fromUtf8(keyString);
